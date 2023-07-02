@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Calendar</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>Calendar</h1>
+      </header>
+      
+      <main>
+        <section>
+          <article class="calendar">
+            <header>
+              <button id="prevMonthBtn">&lt;</button>
+              <h2 id="currentMonth"></h2>
+              <button id="nextMonthBtn">&gt;</button>
+            </header>
+            <table>
+              <thead>
+                <tr>
+                  <th>Sunday</th>
+                  <th>Monday</th>
+                  <th>Tuesday</th>
+                  <th>Wednesday</th>
+                  <th>Thursday</th>
+                  <th>Friday</th>
+                  <th>Saturday</th>
+                </tr>
+              </thead>
+              <tbody id="calendarBody">
+                <!-- Calendar dates will be dynamically populated here -->
+              </tbody>
+            </table>
+            <footer>
+                <p id="currentDayDate"></p>
+                <p>&copy; 2023 Your Calendar App</p>
+              </footer>
+          </article>
+        </section>
+      </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
