@@ -40,6 +40,8 @@ main {
 .calendar {
     border: 1px solid #ccc;
     padding: 1rem;
+    width: 100%;
+    height: 100%;
 }
 
 /* Styling for the header within the calendar section */
@@ -62,7 +64,7 @@ main {
 /* Styling for the table within the calendar section */
 .calendar table {
     width: 100%;
-    height: 50%;
+    height: 50vh;
     border-collapse: collapse;
 }
 
@@ -187,3 +189,10 @@ footer {
     padding: 1rem 1.5rem;
     border-radius: 5px;
 }
+
+
+/* Styling for the current day javascript*/
+.current-day {
+    background-color: lightgray;
+  }
+  
