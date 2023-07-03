@@ -27,13 +27,13 @@ const daysOfWeek = [
 // Get the current date
 const currentDate = new Date();
 let currentDisplayedMonth = currentDate.getMonth(); // Track the displayed month separately
+let currentDisplayedYear = currentDate.getFullYear(); // Track the displayed year separately
 
 /**
  * Display the current month and year
  */
 const displayCurrentMonth = () => {
-  const currentYear = currentDate.getFullYear();
-  currentMonthElement.textContent = `${months[currentDisplayedMonth]} ${currentYear}`;
+  currentMonthElement.textContent = `${months[currentDisplayedMonth]} ${currentDisplayedYear}`;
 };
 
 /**
@@ -42,13 +42,11 @@ const displayCurrentMonth = () => {
 const generateCalendar = () => {
   calendarBody.innerHTML = '';
 
-  const currentYear = currentDate.getFullYear();
-
   // Get the first day of the month
-  const firstDay = new Date(currentYear, currentDisplayedMonth, 1).getDay();
+  const firstDay = new Date(currentDisplayedYear, currentDisplayedMonth, 1).getDay();
 
   // Get the number of days in the month
-  const lastDay = new Date(currentYear, currentDisplayedMonth + 1, 0).getDate();
+  const lastDay = new Date(currentDisplayedYear, currentDisplayedMonth + 1, 0).getDate();
 
   let date = 1;
 
@@ -72,7 +70,7 @@ const generateCalendar = () => {
         if (
           currentDate.getDate() === date &&
           currentDate.getMonth() === currentDisplayedMonth &&
-          currentDate.getFullYear() === currentYear
+          currentDate.getFullYear() === currentDisplayedYear
         ) {
           cell.classList.add('current-day');
         }
@@ -121,6 +119,12 @@ setInterval(() => {
 prevMonthBtn.addEventListener('click', (e) => {
   e.preventDefault();
   currentDisplayedMonth--; // Decrement the displayed month
+
+  if (currentDisplayedMonth < 0) {
+    currentDisplayedMonth = 11; // Wrap around to December
+    currentDisplayedYear--; // Decrement the year
+  }
+
   displayCurrentMonth();
   generateCalendar();
   updateCurrentDayDate();
@@ -129,6 +133,12 @@ prevMonthBtn.addEventListener('click', (e) => {
 nextMonthBtn.addEventListener('click', (e) => {
   e.preventDefault();
   currentDisplayedMonth++; // Increment the displayed month
+
+  if (currentDisplayedMonth > 11) {
+    currentDisplayedMonth = 0; // Wrap around to January
+    currentDisplayedYear++; // Increment the year
+  }
+
   displayCurrentMonth();
   generateCalendar();
   updateCurrentDayDate();
