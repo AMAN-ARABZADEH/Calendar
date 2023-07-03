@@ -6,20 +6,20 @@
  * Date: 2023-07-03
  */
 
-// Get the elements
+// Get the elements in global variables 
 const currentMonthElement = document.getElementById('currentMonth');
 const prevMonthBtn = document.getElementById('prevMonthBtn');
 const nextMonthBtn = document.getElementById('nextMonthBtn');
 const calendarBody = document.getElementById('calendarBody');
 const currentDayDateElement = document.getElementById('currentDayDate');
 
-// Define the months
+// Define the months of the year in one array
 const months = [
   'January', 'February', 'March', 'April', 'May', 'June',
   'July', 'August', 'September', 'October', 'November', 'December'
 ];
 
-// Define the days of the week
+// Define the days of the week inb one array
 const daysOfWeek = [
   'Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'
 ];
