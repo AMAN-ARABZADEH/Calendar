@@ -1,5 +1,10 @@
-'use strict'
 'use strict';
+
+/**
+ * Calendar App
+ * Author: Aman Arabzadeh
+ * Date: 2023-07-03
+ */
 
 // Get the elements
 const currentMonthElement = document.getElementById('currentMonth');
@@ -21,26 +26,29 @@ const daysOfWeek = [
 
 // Get the current date
 const currentDate = new Date();
+let currentDisplayedMonth = currentDate.getMonth(); // Track the displayed month separately
 
-// Display the current month and year
+/**
+ * Display the current month and year
+ */
 const displayCurrentMonth = () => {
-  const currentMonth = currentDate.getMonth();
   const currentYear = currentDate.getFullYear();
-  currentMonthElement.textContent = `${months[currentMonth]} ${currentYear}`;
+  currentMonthElement.textContent = `${months[currentDisplayedMonth]} ${currentYear}`;
 };
 
-// Generate the calendar dates
+/**
+ * Generate the calendar dates
+ */
 const generateCalendar = () => {
   calendarBody.innerHTML = '';
 
-  const currentMonth = currentDate.getMonth();
   const currentYear = currentDate.getFullYear();
 
   // Get the first day of the month
-  const firstDay = new Date(currentYear, currentMonth, 1).getDay();
+  const firstDay = new Date(currentYear, currentDisplayedMonth, 1).getDay();
 
   // Get the number of days in the month
-  const lastDay = new Date(currentYear, currentMonth + 1, 0).getDate();
+  const lastDay = new Date(currentYear, currentDisplayedMonth + 1, 0).getDate();
 
   let date = 1;
 
@@ -63,7 +71,7 @@ const generateCalendar = () => {
 
         if (
           currentDate.getDate() === date &&
-          currentDate.getMonth() === currentMonth &&
+          currentDate.getMonth() === currentDisplayedMonth &&
           currentDate.getFullYear() === currentYear
         ) {
           cell.classList.add('current-day');
@@ -78,50 +86,55 @@ const generateCalendar = () => {
   }
 };
 
-// Update the current day, date, and time at the bottom
+/**
+ * Update the current day, date, and time at the bottom
+ */
 const updateCurrentDayDate = () => {
-    const currentDay = daysOfWeek[currentDate.getDay()];
-    const currentDateFormatted = currentDate.toLocaleDateString('en-US', {
-      year: 'numeric',
-      month: 'long',
-      day: 'numeric'
-    });
-  
-    const currentTime = getCurrentTimeFormatted();
-    currentDayDateElement.textContent = `Today is ${currentDay}, ${currentDateFormatted}, and the time is: ${currentTime}`;
-  };
-  
-  // Get the current time formatted with leading zeros
-  const getCurrentTimeFormatted = () => {
-    const hours = currentDate.getHours().toString().padStart(2, '0');
-    const minutes = currentDate.getMinutes().toString().padStart(2, '0');
-    const seconds = currentDate.getSeconds().toString().padStart(2, '0');
-    return `${hours}:${minutes}:${seconds}`;
-  };
-  
-  // Update the time every second
-  setInterval(() => {
-    currentDate.setTime(Date.now());
-    updateCurrentDayDate();
-  }, 1000);
-  
-  // Event listeners for previous and next month buttons
-  prevMonthBtn.addEventListener('click', () => {
-    currentDate.setMonth(currentDate.getMonth() - 1);
-    displayCurrentMonth();
-    generateCalendar();
-    updateCurrentDayDate();
+  const currentDay = daysOfWeek[currentDate.getDay()];
+  const currentDateFormatted = currentDate.toLocaleDateString('en-US', {
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric'
   });
-  
-  nextMonthBtn.addEventListener('click', () => {
-    currentDate.setMonth(currentDate.getMonth() + 1);
-    displayCurrentMonth();
-    generateCalendar();
-    updateCurrentDayDate();
-  });
-  
-  // Initial display
+
+  const currentTime = getCurrentTimeFormatted();
+  currentDayDateElement.textContent = `Today is ${currentDay}, ${currentDateFormatted}, and the time is: ${currentTime}`;
+};
+
+/**
+ * Get the current time formatted with leading zeros
+ */
+const getCurrentTimeFormatted = () => {
+  const hours = currentDate.getHours().toString().padStart(2, '0');
+  const minutes = currentDate.getMinutes().toString().padStart(2, '0');
+  const seconds = currentDate.getSeconds().toString().padStart(2, '0');
+  return `${hours}:${minutes}:${seconds}`;
+};
+
+// Update the time every second
+setInterval(() => {
+  currentDate.setTime(Date.now());
+  updateCurrentDayDate();
+}, 1000);
+
+// Event listeners for previous and next month buttons
+prevMonthBtn.addEventListener('click', (e) => {
+  e.preventDefault();
+  currentDisplayedMonth--; // Decrement the displayed month
   displayCurrentMonth();
   generateCalendar();
   updateCurrentDayDate();
-  
+});
+
+nextMonthBtn.addEventListener('click', (e) => {
+  e.preventDefault();
+  currentDisplayedMonth++; // Increment the displayed month
+  displayCurrentMonth();
+  generateCalendar();
+  updateCurrentDayDate();
+});
+
+// Initial display
+displayCurrentMonth();
+generateCalendar();
+updateCurrentDayDate();

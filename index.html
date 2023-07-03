@@ -4,45 +4,48 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Calendar</title>
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="style.css"> <!-- External CSS file -->
+  <!-- Add the Google Fonts link to the head section for a nicer font -->
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
     <header>
-        <h1>Calendar</h1>
-      </header>
+        <h1>Calendar</h1> <!-- Header with the title -->
+    </header>
       
-      <main>
+    <main>
         <section>
-          <article class="calendar">
-            <header>
-              <button id="prevMonthBtn">&lt;</button>
-              <h2 id="currentMonth"></h2>
-              <button id="nextMonthBtn">&gt;</button>
-            </header>
-            <table>
-              <thead>
-                <tr>
-                  <th>Sunday</th>
-                  <th>Monday</th>
-                  <th>Tuesday</th>
-                  <th>Wednesday</th>
-                  <th>Thursday</th>
-                  <th>Friday</th>
-                  <th>Saturday</th>
-                </tr>
-              </thead>
-              <tbody id="calendarBody">
-                <!-- Calendar dates will be dynamically populated here -->
-              </tbody>
-            </table>
-            <footer>
-                <p id="currentDayDate"></p>
-                <p>&copy; 2023 Your Calendar App</p>
-              </footer>
-          </article>
-        </section>
-      </main>
+            <article class="calendar">
+                <header>
+                    <button id="prevMonthBtn" class="calendar-btn">&lt;</button>
+                    <h2 id="currentMonth"></h2>
+                    <button id="nextMonthBtn" class="calendar-btn">&gt;</button>
 
-  <script src="script.js"></script>
+                </header>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Sunday</th> <!-- Table header for Sunday -->
+                            <th>Monday</th> <!-- Table header for Monday -->
+                            <th>Tuesday</th> <!-- Table header for Tuesday -->
+                            <th>Wednesday</th> <!-- Table header for Wednesday -->
+                            <th>Thursday</th> <!-- Table header for Thursday -->
+                            <th>Friday</th> <!-- Table header for Friday -->
+                            <th>Saturday</th> <!-- Table header for Saturday -->
+                        </tr>
+                    </thead>
+                    <tbody id="calendarBody">
+                        <!-- Calendar dates will be dynamically populated here -->
+                    </tbody>
+                </table>
+                <footer>
+                    <p id="currentDayDate" class="current-day-date"></p> <!-- Paragraph to display the current day's date -->
+                    <p>&copy; 2023 Your Calendar App</p> <!-- Footer text with copyright information -->
+                </footer>
+            </article>
+        </section>
+    </main>
+
+  <script src="script.js"></script> <!-- External JavaScript file -->
 </body>
 </html>
