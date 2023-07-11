@@ -40,6 +40,9 @@ This project was inspired by the following resources:
 ## Acknowledgements
 
 The Calendar App was developed by [Aman Arabzadeh](https://github.com/AMAN-ARABZADEH).
+## License
+
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
 
 ---
 
